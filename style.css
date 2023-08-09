@@ -1,5 +1,20 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  height: 100vh;
+  background-color: black;
+  background-image: url('./src/assets/imagine.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color:#ebf1f6;
+  font-size: 1rem;
 }
 
 .events {
@@ -43,17 +58,17 @@ h1 {
 }
 
 #page-header {
-  background-color: #fff;
+  background-color: #ef530b;
   position: sticky;
   top: 0;
 }
 
 .link-item {
-  color: #de411b
+  color: #f9f7f7
 }
 
 .logo {
-  height: 50px;
+  height: 100px;
   padding: 6px;
 }
 
@@ -72,8 +87,120 @@ h1 {
   margin-bottom: 40px;
 }
 
-
-.Ana{
-  width: 100%;
-  padding-bottom: 100px;
+.a hover{
+  color: #de411b;
 }
+
+header{
+  position: relative;
+  padding: 0 2rem;
+}
+
+.navbar{
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo a{
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+}
+
+.navbar .links{
+  display: flex;
+ gap: 2rem;
+}
+
+.navbar .toggle_btn{
+  color: #ebf1f6;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.action-btn{
+  background-color: #de411b;
+  color: #ebf1f6;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.3s ease-in-out;
+}
+
+.action-btn:hover{
+ scale: 1.05;
+ color: #ebf1f6;
+}
+
+.action-btn:active{
+  scale: 100%;
+  align-items: center;
+}
+
+.dropdown_menu{
+  display: none;
+  position: absolute ;
+  right: 2rem;
+  top: 60px;
+  height: 0;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+}
+
+.dropdown_menu.open{
+  height: 150px;
+}
+
+.dropdown_menu li{
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown_menu .action-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 992px){
+  .navbar .links,
+  .navbar .action-btn{
+    display: none;
+  }
+
+  .navbar .toggle_btn{
+   display: block;
+  }
+}
+
+.dropdown_menu{
+  display: block;
+}
+
+@media (max-width: 992px){
+  
+  .dropdown_menu{
+    width: unset;
+    left: 2rem;
+  }
+}
+
+.title{
+
+}
+
+
