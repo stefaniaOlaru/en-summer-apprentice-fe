@@ -3,17 +3,56 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		 integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+		 crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="./src/styles.css" />
 		<link rel="stylesheet" href="./style.css" />
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&amp;display=swap" rel="stylesheet">
 		<title>Ticket Management</title>
-</head>
+ </head>
 	<body>
-		<header id="page-header">
+		<header>
+			<div class = "navbar">
+				<div class = "logo">
+					<a href = "/">
+						<img class="logo" src="./src/assets/logo-removebg-preview (1).png" alt="app logo">
+					</a>
+				</div>
+				<h1 class = "color: text-white">WELCOME</h1>
+				<!-- <ul class = "links">
+					<li><a href = "/">Home</a></li>
+					<li><a href = "/orders">Orders</a></li>
+					<li><a href = "/contact">Contact</a></li>
+				</ul> 
+				<a href="#" class = "action_btn">WELCOME</a>-->
+				<div class="toggle_btn">
+					<i class="fa-solid fa-bars"></i>
+				</div>
+			</div>
+			<div class="dropdown_menu open">
+				<li><a href = "/">Home</a></li>
+				<li><a href = "/orders">Orders</a></li>
+				<li><a href = "/contact">Contact</a></li>
+			</div>
+		</header>
+		<script>	
+			const toggleBtn = document.querySelector('.toggle_btn');
+			const toggleBtnIcon = document.querySelector('.toggle_btn i');
+			const dropdownMenu = document.querySelector('.dropdown_menu');
+			
+			toggleBtn.onclick = function (){
+				dropdownMenu.classList.toggle('open');
+				const isOpen = dropdownMenu.classList.contains('open');
+
+				toggleBtnIcon.classList = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+			}
+		</script>
+		<!-- <header id="page-header">
 			<nav class="container mx-auto px-4 py-2 flex items-center justify-between">
 				<div>
 					<a href="/" aria-label="Go to home page" class="text-white font-bold text-2xl">
-						<img class="logo" src="./src/assets/logo.png" alt="app logo">
+						<img class="logo" src="./src/assets/logo-removebg-preview (1).png" alt="app logo">
 					</a>
 				</div>
 				<div class="md:block">
@@ -63,7 +102,8 @@
 					</li>
 				</ul>
 			</div>
-		</header>
+			/*  <img class="Ana" src="./src/assets/TMS.png" alt="summer"> */
+		</header> -->
 		<main class="main-content-component">
 		</main>
 		<script type="module" src="./main.js"></script>
