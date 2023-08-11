@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 // Navigate to a specific URL
 function navigateTo(url) {
   history.pushState(null, null, url);
@@ -7,7 +9,7 @@ function navigateTo(url) {
 function getHomePageTemplate() {
   return `
    <div id="content">
-      <img class="Ana" src="./src/assets/TMS.png" alt="summer">
+      <h1 class = "color: text-white">WELCOME</h1>
       <div class="events flex items-center justify-center flex-wrap">
       </div>
     </div>
@@ -63,41 +65,73 @@ function setupInitialPage() {
 function renderHomePage() {
   const mainContentDiv = document.querySelector('.main-content-component');
   mainContentDiv.innerHTML = getHomePageTemplate();
-  // Sample hardcoded event data
-  const eventData = {
-    id: 1,
-    description: 'Sample event description.',
-    img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
-    name: 'Sample Event',
-    ticketCategories: [
-      { id: 1, description: 'General Admission' },
-      { id: 2, description: 'VIP' },
-    ],
-  };
-  // Create the event card element
-  const eventCard = document.createElement('div');
-  eventCard.classList.add('event-card'); 
-  // Create the event content markup
-  const contentMarkup = `
-    <header>
-      <h2 class="event-title text-2xl font-bold">${eventData.name}</h2>
-    </header>
-    <div class="content">
-      <img src="${eventData.img}" alt="${eventData.name}" class="event-image w-full height-200 rounded object-cover mb-4">
-      <p class="description text-gray-700">${eventData.description}</p>
-    </div>
-  `;
-
-  eventCard.innerHTML = contentMarkup;
-  const eventsContainer = document.querySelector('.events');
-  // Append the event card to the events container
-  eventsContainer.appendChild(eventCard);
+ 
+  fetchEvents().then((data) =>{
+    addEvents(data);
+  });
+  
 }
 
 function renderOrdersPage(categories) {
   const mainContentDiv = document.querySelector('.main-content-component');
   mainContentDiv.innerHTML = getOrdersPageTemplate();
 }
+
+async function fetchEvents() {
+  const response = await fetch('http://localhost:8080/api/allEvents');
+ // const response = await fetch('/api/Event/GetAll');
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+
+const addEvents = (events) =>{
+  const eventsDiv = document.querySelector('.events');
+  eventsDiv.innerHTML = 'No events found';
+  if(events.length){
+    eventsDiv.innerHTML = '';
+    events.forEach((event) => {
+      eventsDiv.appendChild(createEvent(event));
+    });
+  }
+};
+
+const createEvent = (eventData) =>{
+  const eventDiv = document.createElement('div');
+  const eventElement = `
+  <div class ="container">
+  <div class = "flip-card">
+    <div class = "flip-card-inner">
+      <div class = "flip-card-front">
+        <img src = "./src/assets/${eventData.name}.jpeg">
+      </div>
+
+      <div class = "flip-card-back">
+        <p class = "title">${eventData.name}</p>
+        <div class="separator"></div>
+        <p class="type">${eventData.eventType.name}</p>
+        <p class="price">Free</p>
+
+        <p class="info">
+          <i class = "fas fa-map-marker-alt"></i>
+            ${eventData.venue.location}
+        </p>
+       <p class="info">
+          <i class = "fas fa-calendar-alt"></i>
+            ${eventData.startDate}
+        </p>
+
+        <p class="info description">
+          ${eventData.description}
+       </p>
+      </div>
+    </div>
+  </div>  
+  </div>    
+  `;
+  eventDiv.innerHTML = eventElement;
+  return eventDiv;
+};
 
 // Render content based on URL
 function renderContent(url) {

@@ -1,5 +1,20 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  height: 100vh;
+  background-color: black;
+  background-image: url('./src/assets/imagine.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color:#ebf1f6;
+  font-size: 1rem;
 }
 
 .events {
@@ -43,17 +58,17 @@ h1 {
 }
 
 #page-header {
-  background-color: #fff;
+  background-color: #ef530b;
   position: sticky;
   top: 0;
 }
 
 .link-item {
-  color: #de411b
+  color: #f9f7f7
 }
 
 .logo {
-  height: 50px;
+  height: 100px;
   padding: 6px;
 }
 
@@ -72,8 +87,226 @@ h1 {
   margin-bottom: 40px;
 }
 
+.a hover{
+  color: #de411b;
+}
 
-.Ana{
+header{
+  position: relative;
+  padding: 0 2rem;
+}
+
+.navbar{
   width: 100%;
-  padding-bottom: 100px;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo a{
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+}
+
+.navbar .links{
+  display: flex;
+ gap: 2rem;
+}
+
+.navbar .toggle_btn{
+  color: #ebf1f6;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.action-btn{
+  background-color: #de411b;
+  color: #ebf1f6;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.3s ease-in-out;
+}
+
+.action-btn:hover{
+ scale: 1.05;
+ color: #ebf1f6;
+}
+
+.action-btn:active{
+  scale: 100%;
+  align-items: center;
+}
+
+.dropdown_menu{
+  display: none;
+  position: absolute ;
+  right: 2rem;
+  top: 60px;
+  height: 0;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  z-index: 3;
+}
+
+.dropdown_menu.open{
+  height: 150px;
+  z-index: 2;
+}
+
+.dropdown_menu li{
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown_menu .action-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 992px){
+  .navbar .links,
+  .navbar .action-btn{
+    display: none;
+  }
+
+  .navbar .toggle_btn{
+   display: block;
+  }
+}
+
+.dropdown_menu{
+  display: block;
+}
+
+@media (max-width: 992px){
+  
+  .dropdown_menu{
+    width: unset;
+    left: 2rem;
+  }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.container{
+  width: 350px;
+  height: 350px;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  margin: 20px
+}
+
+
+.title, .type{
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+ 
+}
+
+.info{
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.separator{
+  width: 20%;
+  height: 6px;
+  background-color: rgb(34,193,195);
+  margin-bottom: 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.info i{
+  color: white;
+  font-size: 1.1rem;
+  margin-right: 4px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px; 
+  padding: 20px;
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+   box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card-front img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.flip-card-back {
+  /* background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
+  background: rgba(0, 0, 0, 0.15);
+  /* background-size: cover; */
+  color: white;
+  transform: rotateY(180deg);
 }
