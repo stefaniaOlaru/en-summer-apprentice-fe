@@ -13,7 +13,6 @@ export default {
         target: "https://localhost:7069",
         changeOrigin: true,
         secure: false,
-        //rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },

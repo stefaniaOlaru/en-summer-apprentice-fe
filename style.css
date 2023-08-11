@@ -157,10 +157,12 @@ header{
   border-radius: 10px;
   overflow: hidden;
   transition: height 0.3s ease-in-out;
+  z-index: 3;
 }
 
 .dropdown_menu.open{
   height: 150px;
+  z-index: 2;
 }
 
 .dropdown_menu li{
@@ -199,8 +201,112 @@ header{
   }
 }
 
-.title{
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
 
+.container{
+  width: 350px;
+  height: 350px;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  margin: 20px
 }
 
 
+.title, .type{
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+ 
+}
+
+.info{
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.separator{
+  width: 20%;
+  height: 6px;
+  background-color: rgb(34,193,195);
+  margin-bottom: 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.info i{
+  color: white;
+  font-size: 1.1rem;
+  margin-right: 4px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px; 
+  padding: 20px;
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+   box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card-front img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.flip-card-back {
+  /* background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
+  background: rgba(0, 0, 0, 0.15);
+  /* background-size: cover; */
+  color: white;
+  transform: rotateY(180deg);
+}
