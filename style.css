@@ -1,29 +1,45 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  height: 100vh;
+  background-color: black;
+  background-image: url('./src/assets/imagine.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color:#ebf1f6;
+  font-size: 1rem;
 }
 
 .events {
   justify-content: center;
   flex-wrap: wrap;
+  display: flex;
 }
 
-h1 {
-  text-align: center;
+
+
+.pageTitle{
+  display: flex;
   font-size: 32px;
   font-weight: bold;
-  margin-bottom: 12px;
-  color: #731bde;
+  color: white;
 }
 
-.events .event {
-  width: 300px;
-  border: 1px solid #ebf1f6;
-  box-shadow: 0 0 2px 0 rgba(145,158,171,.2), 0 12px 24px -4px rgba(145,158,171,.12);
-}
-
-.event-title {
-  color: #de411b
-}
 
 .event img {
   height: 150px;
@@ -43,17 +59,17 @@ h1 {
 }
 
 #page-header {
-  background-color: #fff;
+  background-color: #ef530b;
   position: sticky;
   top: 0;
 }
 
 .link-item {
-  color: #de411b
+  color: #f9f7f7
 }
 
 .logo {
-  height: 50px;
+  height: 100px;
   padding: 6px;
 }
 
@@ -72,8 +88,439 @@ h1 {
   margin-bottom: 40px;
 }
 
-
-.Ana{
-  width: 100%;
-  padding-bottom: 100px;
+.a hover{
+  color: #de411b;
 }
+
+header{
+  position: relative;
+  padding: 0 2rem;
+}
+
+.navbar{
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin:auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .logo a{
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+}
+
+.navbar .links{
+  display: flex;
+ gap: 2rem;
+}
+
+.navbar .toggle_btn{
+  color: #ebf1f6;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.action-btn{
+  background-color: #de411b;
+  color: #ebf1f6;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.3s ease-in-out;
+}
+
+.action-btn:hover{
+ scale: 1.05;
+ color: #ebf1f6;
+}
+
+.action-btn:active{
+  scale: 100%;
+  align-items: center;
+}
+
+.dropdown_menu{
+  display: none;
+  position: absolute ;
+  right: 2rem;
+  top: 60px;
+  height: 0;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  z-index: 3;
+}
+
+.dropdown_menu.open{
+  height: 150px;
+  z-index: 2;
+}
+
+.dropdown_menu li{
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown_menu .action-btn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 992px){
+  .navbar .links,
+  .navbar .action-btn{
+    display: none;
+  }
+
+  .navbar .toggle_btn{
+   display: block;
+  }
+}
+
+.dropdown_menu{
+  display: block;
+}
+
+@media (max-width: 992px){
+  
+  .dropdown_menu{
+    width: unset;
+    left: 2rem;
+  }
+}
+
+ .contentSearch{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+
+.search-box{
+  /* background: #fdbb2d; */
+  background: rgba(0, 0, 0, 0.15);
+  background: none;
+  height: 65px;
+  border-radius: 40px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box:hover > .search-txt{
+  width: 350px;
+  padding: 0 6px;
+}
+
+.search-box:hover > .search-btn{
+  background: white;
+}
+
+.search-box:hover{
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.search-btn{
+  color: #fdbb2d;
+  float: left;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.search-txt{
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  font-size: 20px;
+  color: white;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px
+}
+
+.search-txt::placeholder {
+  text-align: center; /* Center the placeholder text */
+}
+
+/* .clear{
+  float: left;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  right: 15px;
+  background: yellow;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+} */
+
+.container{
+  width: 350px;
+  height: 350px;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  margin: 20px;
+}
+
+
+.title, .type{
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+ 
+}
+
+.info{
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.separator{
+  width: 20%;
+  height: 10px;
+  background-color: rgb(34,193,195);
+  margin-bottom: 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.separatorOrder{
+  width: 100%;
+  height: 6px;
+  background-color: rgb(34,193,195);
+  margin-bottom: 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.info i{
+  color: white;
+  font-size: 1.1rem;
+  margin-right: 4px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 320px;
+  height: 300px;
+  perspective: 1000px; 
+  padding: 20px;
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card-front img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.flip-card-back {
+  background: transparent;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.filterSection{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  margin-top: 10%;
+}
+
+.filterSection label{
+  color: white;
+  width: 100%;
+}
+
+.filters{
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.15);
+  width: fit-content;
+  /* border-radius: 20px; */
+}
+/* width */
+.filters::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+.filters::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 50%;
+}
+
+/* Handle */
+.filters::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+.filtersWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: -40px;
+  margin-bottom: 20px;
+}
+
+.filterBtn{
+  background: rgba(0, 0, 0, 0.15);
+  color: #fdbb2d;
+  border: none;
+  outline: none;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterBtn:hover{
+  background: white;
+}
+
+.table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.containerForOrders{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.tableHeader {
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
+  background: rgb(5, 159, 161);
+  height: 30px;
+  gap: 20px;
+}
+
+ p{
+  background: none;
+  color: #ebf1f6;
+  font-size: large;
+}
+
+.createOrder{
+  color: #ebf1f6;
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
+  height: 30px;
+  flex: 1;
+  height: 50px;
+}
+
+.tableHeader >*{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createOrder >*{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions i{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
