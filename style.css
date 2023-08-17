@@ -5,6 +5,14 @@ body {
   background-image: url('./src/assets/imagine.webp');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 li {
@@ -20,25 +28,18 @@ a {
 .events {
   justify-content: center;
   flex-wrap: wrap;
+  display: flex;
 }
 
-h1 {
-  text-align: center;
+
+
+.pageTitle{
+  display: flex;
   font-size: 32px;
   font-weight: bold;
-  margin-bottom: 12px;
-  color: #731bde;
+  color: white;
 }
 
-.events .event {
-  width: 300px;
-  border: 1px solid #ebf1f6;
-  box-shadow: 0 0 2px 0 rgba(145,158,171,.2), 0 12px 24px -4px rgba(145,158,171,.12);
-}
-
-.event-title {
-  color: #de411b
-}
 
 .event img {
   height: 150px;
@@ -100,7 +101,7 @@ header{
   width: 100%;
   height: 60px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin:auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -201,12 +202,82 @@ header{
   }
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+ .contentSearch{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
+
+
+.search-box{
+  /* background: #fdbb2d; */
+  background: rgba(0, 0, 0, 0.15);
+  background: none;
+  height: 65px;
+  border-radius: 40px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box:hover > .search-txt{
+  width: 350px;
+  padding: 0 6px;
+}
+
+.search-box:hover > .search-btn{
+  background: white;
+}
+
+.search-box:hover{
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.search-btn{
+  color: #fdbb2d;
+  float: left;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.search-txt{
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  font-size: 20px;
+  color: white;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px
+}
+
+.search-txt::placeholder {
+  text-align: center; /* Center the placeholder text */
+}
+
+/* .clear{
+  float: left;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  right: 15px;
+  background: yellow;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+} */
 
 .container{
   width: 350px;
@@ -218,7 +289,7 @@ header{
   justify-content: center;
   align-items: center;
   border-radius: 50px;
-  margin: 20px
+  margin: 20px;
 }
 
 
@@ -237,6 +308,16 @@ header{
 
 .separator{
   width: 20%;
+  height: 10px;
+  background-color: rgb(34,193,195);
+  margin-bottom: 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.separatorOrder{
+  width: 100%;
   height: 6px;
   background-color: rgb(34,193,195);
   margin-bottom: 16px;
@@ -253,7 +334,7 @@ header{
 
 .flip-card {
   background-color: transparent;
-  width: 300px;
+  width: 320px;
   height: 300px;
   perspective: 1000px; 
   padding: 20px;
@@ -267,7 +348,7 @@ header{
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-   box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.15);
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -303,10 +384,143 @@ header{
 
 
 .flip-card-back {
-  /* background: rgb(34,193,195);
-  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
-  background: rgba(0, 0, 0, 0.15);
-  /* background-size: cover; */
+  background: transparent;
   color: white;
   transform: rotateY(180deg);
 }
+
+.filterSection{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  margin-top: 10%;
+}
+
+.filterSection label{
+  color: white;
+  width: 100%;
+}
+
+.filters{
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.15);
+  width: fit-content;
+  /* border-radius: 20px; */
+}
+/* width */
+.filters::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+.filters::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 50%;
+}
+
+/* Handle */
+.filters::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+.filtersWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: -40px;
+  margin-bottom: 20px;
+}
+
+.filterBtn{
+  background: rgba(0, 0, 0, 0.15);
+  color: #fdbb2d;
+  border: none;
+  outline: none;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterBtn:hover{
+  background: white;
+}
+
+.table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.containerForOrders{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.tableHeader {
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
+  background: rgb(5, 159, 161);
+  height: 30px;
+  gap: 20px;
+}
+
+ p{
+  background: none;
+  color: #ebf1f6;
+  font-size: large;
+}
+
+.createOrder{
+  color: #ebf1f6;
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
+  height: 30px;
+  flex: 1;
+  height: 50px;
+}
+
+.tableHeader >*{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createOrder >*{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions i{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
